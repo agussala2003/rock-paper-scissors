@@ -1,0 +1,466 @@
+@import url("https://fonts.googleapis.com/css2?family=Barlow+Semi+Condensed:wght@600;700&display=swap");
+:root {
+  --Dark-text:hsl(229, 25%, 31%);
+  --Score-text: hsl(229, 64%, 46%);
+  --Header-Outline: hsl(217, 16%, 45%);
+}
+
+@keyframes pulse {
+  0% {
+    opacity: 0.8;
+  }
+  100% {
+    opacity: 0;
+    transform: scale(1.5);
+  }
+}
+@keyframes appear {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+@keyframes appear2 {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 0.5;
+  }
+}
+@keyframes disappear {
+  0% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  background: rgb(20, 21, 57);
+  background: linear-gradient(0deg, rgb(20, 21, 57) 0%, rgb(31, 55, 86) 100%);
+  height: -webkit-fill-available;
+}
+
+body {
+  font-family: "Barlow Semi Condensed", sans-serif;
+}
+
+main .pointsBanner {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 90%;
+  margin: 0 auto;
+  margin-top: 20px;
+  padding: 10px;
+  border: 3px solid var(--Header-Outline);
+  border-radius: 5px;
+}
+main .pointsBanner .infoBanner p {
+  font-size: 20px;
+  color: #fff;
+  text-transform: uppercase;
+  line-height: 16px;
+}
+main .pointsBanner .score {
+  text-align: center;
+  background: #fff;
+  padding: 8px 20px;
+  border-radius: 3px;
+}
+main .pointsBanner .score p {
+  color: var(--Score-text);
+  text-transform: uppercase;
+  font-size: 12px;
+  letter-spacing: 1px;
+}
+main .pointsBanner .score #score {
+  font-size: 40px;
+  color: var(--Dark-text);
+}
+main .gameContent {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  margin: auto;
+  height: 275px;
+  width: 260px;
+  margin-top: 185px;
+  transition: all 300ms ease-in;
+}
+main .gameContent .iconsbg {
+  cursor: pointer;
+}
+main .gameContent .pentagon #desktop {
+  display: none;
+}
+main .gameContent .pentagon svg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  margin: auto;
+}
+main .gameContent .icons {
+  cursor: pointer;
+  position: absolute;
+  background: #fff;
+  padding: 50px;
+  border-radius: 50%;
+  width: 110px;
+  height: 110px;
+  box-shadow: 0px 8px 0px 0px rgba(53, 53, 53, 0.31) inset;
+  -webkit-box-shadow: 0px 8px 0px 0px rgba(53, 53, 53, 0.31) inset;
+  -moz-box-shadow: 0px 8px 0px 0px rgba(53, 53, 53, 0.31) inset;
+}
+main .gameContent .icons svg {
+  margin-left: -20px;
+  margin-top: -20px;
+}
+main .gameContent #scissors {
+  right: -20px;
+}
+main .gameContent #rock {
+  bottom: 0;
+  left: 28%;
+}
+main .gameContent #paper {
+  left: -20px;
+}
+main .gameContent .bgpaper {
+  position: absolute;
+  width: 150px;
+  height: 150px;
+  background: linear-gradient(hsl(230deg, 89%, 62%), hsl(230deg, 89%, 65%));
+  left: -40px;
+  top: -20px;
+  border-radius: 50%;
+  box-shadow: 0px -8px 0px 0px rgba(53, 53, 53, 0.31) inset;
+  -webkit-box-shadow: 0px -8px 0px 0px rgba(53, 53, 53, 0.31) inset;
+  -moz-box-shadow: 0px -8px 0px 0px rgba(53, 53, 53, 0.31) inset;
+}
+main .gameContent .bgscissors {
+  position: absolute;
+  width: 150px;
+  height: 150px;
+  background: linear-gradient(hsl(39deg, 89%, 49%), hsl(40deg, 84%, 53%));
+  right: -40px;
+  top: -20px;
+  border-radius: 50%;
+  box-shadow: 0px -8px 0px 0px rgba(53, 53, 53, 0.31) inset;
+  -webkit-box-shadow: 0px -8px 0px 0px rgba(53, 53, 53, 0.31) inset;
+  -moz-box-shadow: 0px -8px 0px 0px rgba(53, 53, 53, 0.31) inset;
+}
+main .gameContent .bgrock {
+  position: absolute;
+  width: 150px;
+  height: 150px;
+  background: linear-gradient(hsl(349deg, 71%, 52%), hsl(349deg, 70%, 56%));
+  bottom: -20px;
+  left: 20%;
+  border-radius: 50%;
+  box-shadow: 0px -8px 0px 0px rgba(53, 53, 53, 0.31) inset;
+  -webkit-box-shadow: 0px -8px 0px 0px rgba(53, 53, 53, 0.31) inset;
+  -moz-box-shadow: 0px -8px 0px 0px rgba(53, 53, 53, 0.31) inset;
+}
+main .gameContent .titles,
+main .gameContent .emptyCTitle {
+  display: none;
+}
+main .playing {
+  transition: all 300ms ease-out;
+}
+main .playing .icons {
+  display: none;
+}
+main .playing .iconsbg {
+  display: none;
+}
+main .playing .picked {
+  display: block;
+  left: -20px !important;
+  top: 0;
+}
+main .playing .pickedbg {
+  display: block;
+  left: -40px;
+  top: -20px;
+}
+main .playing .pickedbg::before {
+  content: "";
+  position: absolute;
+  width: 150px;
+  height: 150px;
+  background-color: #fff;
+  border-radius: 50%;
+  z-index: -1;
+  opacity: 0.7;
+}
+main .playing .pickedbg::before {
+  animation: pulse 1s ease-out infinite;
+}
+main .playing .pentagon {
+  display: none;
+}
+main .playing .titles {
+  display: inline-block;
+  color: #fff;
+  margin-top: 150px;
+  text-transform: uppercase;
+  margin-left: -15px;
+  width: fit-content;
+}
+main .playing .titles p {
+  letter-spacing: 1px;
+}
+main .playing .emptyC {
+  position: absolute;
+  background: #16203b;
+  padding: 50px;
+  border-radius: 50%;
+  width: 110px;
+  height: 110px;
+  right: -10px;
+  top: 0px;
+}
+main .playing .emptyCTitle {
+  display: block;
+  position: absolute;
+  margin-top: 0;
+  color: #fff;
+  text-transform: uppercase;
+  margin-left: -15px;
+  width: fit-content;
+  top: 150px;
+  right: -30px;
+}
+main .playing .emptyCTitle p {
+  letter-spacing: 1px;
+}
+main .playing .resultbg,
+main .playing .resultpicked {
+  display: inline-block;
+  position: absolute;
+  right: -10px;
+  top: 0px;
+  left: auto;
+}
+main .playing .resultbg {
+  top: -20px;
+  right: -30px;
+}
+main .playing .resultContainer {
+  margin-top: 40px;
+  text-align: center;
+}
+main .playing .resultContainer h1 {
+  text-transform: uppercase;
+  color: #fff;
+  font-size: 50px;
+}
+main .playing .resultContainer button {
+  width: 200px;
+  height: 50px;
+  margin-top: 10px;
+  border-radius: 5px;
+  border: none;
+  background-color: #fff;
+  color: #16203b;
+  text-transform: uppercase;
+  font-size: 16px;
+  letter-spacing: 2px;
+  cursor: pointer;
+  font-family: "Barlow Semi Condensed", sans-serif;
+}
+main .rulesContainer {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  margin: auto;
+  margin-top: 535px;
+  width: fit-content;
+}
+main .rulesContainer button {
+  cursor: pointer;
+  border: none;
+  padding: 10px 30px;
+  font-size: 16px;
+  text-transform: uppercase;
+  background: none;
+  border: 3px solid var(--Header-Outline);
+  border-radius: 5px;
+  color: #fff;
+  letter-spacing: 1px;
+  font-family: "Barlow Semi Condensed", sans-serif;
+}
+
+.rulesModal {
+  position: absolute;
+  z-index: 999999999999 !important;
+  background: #fff;
+  display: none;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  align-items: center;
+  gap: 110px;
+  margin-top: -124px;
+  width: -webkit-fill-available;
+  height: -webkit-fill-available;
+}
+.rulesModal h1 {
+  text-transform: uppercase;
+  color: #16203b;
+}
+.rulesModal #closeRules {
+  cursor: pointer;
+}
+
+.rulesModalActive {
+  display: flex;
+  animation: appear 1s;
+}
+
+.disappear {
+  animation: disappear 1s;
+}
+
+@media (min-width: 1024px) {
+  main .gameContent {
+    height: 400px;
+    width: 313px;
+    margin-top: 260px;
+  }
+  main .gameContent .bgrock {
+    left: 25%;
+    bottom: 10px;
+  }
+  main .gameContent #rock {
+    bottom: 31px;
+    left: 31.4%;
+  }
+  main .gameContent .bgscissors {
+    top: 0;
+  }
+  main .gameContent #scissors {
+    top: 20px;
+  }
+  main .gameContent .bgpaper {
+    top: 0;
+  }
+  main .gameContent #paper {
+    top: 20px;
+  }
+  main .playing .pickedbg {
+    left: -180px;
+    top: 200px;
+  }
+  main .playing .picked {
+    left: -160px !important;
+    top: 217px !important;
+  }
+  main .playing .titles {
+    position: absolute;
+    top: 235px;
+    left: -145px;
+  }
+  main .playing .emptyCTitle {
+    margin-top: 150px;
+    top: 235px;
+    right: -190px;
+  }
+  main .playing .emptyCTitle p,
+  main .playing .titles p {
+    font-size: 20px;
+  }
+  main .playing .resultContainer {
+    margin-top: 220px;
+    text-align: center;
+  }
+  main .playing .resultbg {
+    right: -180px !important;
+    top: 200px !important;
+    left: auto;
+  }
+  main .playing .resultpicked,
+  main .playing .emptyC {
+    right: -160px !important;
+    top: 218px !important;
+  }
+  main .pointsBanner {
+    width: 40%;
+  }
+  main .pointsBanner .infoBanner p {
+    font-size: 26px;
+    line-height: 20px;
+  }
+  main .pointsBanner .score {
+    padding: 8px 30px;
+  }
+  main .rulesContainer {
+    margin: 0;
+    top: auto;
+    left: auto;
+    right: 30px;
+    bottom: 30px;
+  }
+  main .pentagon #mobile {
+    display: none;
+  }
+  main .pentagon #desktop {
+    display: block !important;
+  }
+  .rulesModal {
+    right: 0;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    margin: auto;
+    width: 500px;
+    height: 560px;
+    border-radius: 10px;
+  }
+  .rulesModal h1 {
+    position: absolute;
+    left: 20px;
+    top: 20px;
+  }
+  .rulesModal #closeRules {
+    position: absolute;
+    right: 20px;
+    top: 30px;
+  }
+  .transparentbg {
+    display: none;
+    width: -webkit-fill-available;
+    position: absolute;
+    right: 0;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    margin: auto;
+    background: #000;
+    opacity: 0.5;
+  }
+  .transparentbgActive {
+    display: block;
+    transition: appear2 1s;
+  }
+}
+
+/*# sourceMappingURL=style.css.map */
